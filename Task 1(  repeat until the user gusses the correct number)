@@ -1,0 +1,36 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class RepeatUntilCorrectGuess {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+
+        int minRange = 1;
+        int maxRange = 100;
+        int secretNumber = random.nextInt(maxRange - minRange + 1) + minRange;
+
+        System.out.println("Welcome to the Repeat Until Correct Guess Game!");
+        System.out.println("I'm thinking of a number between " + minRange + " and " + maxRange);
+
+        int userGuess;
+
+        // Repeat until the user guesses the correct number
+        do {
+            System.out.print("Enter your guess: ");
+            userGuess = scanner.nextInt();
+
+            if (userGuess == secretNumber) {
+                System.out.println("Congratulations! You guessed the correct number!");
+            } else if (userGuess < secretNumber) {
+                System.out.println("Too low! Try a higher number.");
+            } else {
+                System.out.println("Too high! Try a lower number.");
+            }
+
+        } while (userGuess != secretNumber);
+
+        System.out.println("Game over. Thanks for playing!");
+        scanner.close();
+    }
+}
